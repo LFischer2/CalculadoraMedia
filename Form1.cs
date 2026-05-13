@@ -205,7 +205,16 @@ txt.Leave += (s, e) =>
             double media = (np1 * 0.4) + (np2 * 0.4) + (pim * 0.2);
 
             lblSemestral.Text = media.ToString("F1");
-            lblStatus.Text = media >= 7 ? "APROVADO" : "EXAME";
+            if (media >= 7)
+{
+    lblStatus.Text = "APROVADO";
+    lblStatus.ForeColor = Color.Blue;
+}
+else
+{
+    lblStatus.Text = "EXAME";
+    lblStatus.ForeColor = Color.Goldenrod;
+}
         }
 
         private void CalcularFinal(object sender, EventArgs e)
@@ -222,7 +231,16 @@ txt.Leave += (s, e) =>
             double final = (semestral + exame) / 2;
 
             lblFinal.Text = final.ToString("F1");
-            lblStatus.Text = final >= 5 ? "APROVADO" : "REPROVADO";
+            if (final >= 5)
+{
+    lblStatus.Text = "APROVADO";
+    lblStatus.ForeColor = Color.Blue;
+}
+else
+{
+    lblStatus.Text = "REPROVADO";
+    lblStatus.ForeColor = Color.Red;
+}
         }
 
         private void LimparTudo(object sender, EventArgs e)
@@ -234,6 +252,7 @@ txt.Leave += (s, e) =>
             lblSemestral.Text = "0.0";
             lblFinal.Text = "0.0";
             lblStatus.Text = "STATUS";
+            lblStatus.ForeColor = Color.Black;
         }
 
         private void LimparFinal(object sender, EventArgs e)
