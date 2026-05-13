@@ -280,6 +280,7 @@ btnLimparFinal.Enabled = true;
             txtExame.Text = "0";
             lblFinal.Text = "0.0";
             lblStatus.Text = "STATUS";
+            lblStatus.ForeColor = Color.Black;
         }
     }
 }
