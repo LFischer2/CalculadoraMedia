@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace CalculadoraMedia
 {
@@ -147,9 +148,18 @@ txt.Leave += (s, e) =>
 
         private void CalcularSemestral(object sender, EventArgs e)
         {
-            double np1 = Convert.ToDouble(txtNP1.Text);
-            double np2 = Convert.ToDouble(txtNP2.Text);
-            double pim = Convert.ToDouble(txtPIM.Text);
+            double np1 = double.Parse(
+    txtNP1.Text.Replace(",", "."),
+    CultureInfo.InvariantCulture
+);
+            double np2 = double.Parse(
+    txtNP2.Text.Replace(",", "."),
+    CultureInfo.InvariantCulture
+);
+            double pim = double.Parse(
+    txtPIM.Text.Replace(",", "."),
+    CultureInfo.InvariantCulture
+);
 
             double media = (np1 * 0.4) + (np2 * 0.4) + (pim * 0.2);
 
@@ -159,8 +169,14 @@ txt.Leave += (s, e) =>
 
         private void CalcularFinal(object sender, EventArgs e)
         {
-            double semestral = Convert.ToDouble(lblSemestral.Text);
-            double exame = Convert.ToDouble(txtExame.Text);
+            double semestral = double.Parse(
+    lblSemestral.Text.Replace(",", "."),
+    CultureInfo.InvariantCulture
+);
+            double exame = double.Parse(
+    txtExame.Text.Replace(",", "."),
+    CultureInfo.InvariantCulture
+);
 
             double final = (semestral + exame) / 2;
 
