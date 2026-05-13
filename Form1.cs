@@ -22,7 +22,23 @@ namespace CalculadoraMedia
         {
             InitializeComponent();
             CriarInterface();
+
+
+            txtNP1.KeyPress += ApenasNumerosEVirgula_KeyPress;
+    txtNP2.KeyPress += ApenasNumerosEVirgula_KeyPress;
+    txtPIM.KeyPress += ApenasNumerosEVirgula_KeyPress;
+    txtExame.KeyPress += ApenasNumerosEVirgula_KeyPress;
         }
+
+        private void ApenasNumerosEVirgula_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsDigit(e.KeyChar) &&
+            e.KeyChar != ',' &&
+            !char.IsControl(e.KeyChar))
+        {
+            e.Handled = true;
+        }
+    }
 
         private void CriarInterface()
         {
