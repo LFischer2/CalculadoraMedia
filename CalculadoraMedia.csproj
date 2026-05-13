@@ -7,6 +7,9 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
 
+    <AssemblyName>CalculadoraDeMedias06</AssemblyName>
+<RootNamespace>CalculadoraDeMedias06</RootNamespace>
+
     <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
 
