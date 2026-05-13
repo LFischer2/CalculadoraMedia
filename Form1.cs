@@ -34,7 +34,6 @@ namespace CalculadoraMedia
 {
     TextBox txt = sender as TextBox;
 
-    // Permite números, vírgula e backspace
     if (!char.IsDigit(e.KeyChar) &&
         e.KeyChar != ',' &&
         !char.IsControl(e.KeyChar))
@@ -50,17 +49,14 @@ namespace CalculadoraMedia
         return;
     }
 
-    // Simula o texto após digitar
     string novoTexto = txt.Text + e.KeyChar;
 
-    // Validação do valor
     if (double.TryParse(
         novoTexto.Replace(",", "."),
         NumberStyles.Any,
         CultureInfo.InvariantCulture,
         out double valor))
     {
-        // Bloqueia maior que 10
         if (valor > 10)
         {
             e.Handled = true;
