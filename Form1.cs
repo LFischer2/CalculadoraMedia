@@ -31,14 +31,42 @@ namespace CalculadoraMedia
         }
 
         private void ApenasNumerosEVirgula_KeyPress(object sender, KeyPressEventArgs e)
+{
+    TextBox txt = sender as TextBox;
+
+    // Permite números, vírgula e backspace
+    if (!char.IsDigit(e.KeyChar) &&
+        e.KeyChar != ',' &&
+        !char.IsControl(e.KeyChar))
     {
-        if (!char.IsDigit(e.KeyChar) &&
-            e.KeyChar != ',' &&
-            !char.IsControl(e.KeyChar))
+        e.Handled = true;
+        return;
+    }
+
+    // Impede mais de uma vírgula
+    if (e.KeyChar == ',' && txt.Text.Contains(","))
+    {
+        e.Handled = true;
+        return;
+    }
+
+    // Simula o texto após digitar
+    string novoTexto = txt.Text + e.KeyChar;
+
+    // Validação do valor
+    if (double.TryParse(
+        novoTexto.Replace(",", "."),
+        NumberStyles.Any,
+        CultureInfo.InvariantCulture,
+        out double valor))
+    {
+        // Bloqueia maior que 10
+        if (valor > 10)
         {
             e.Handled = true;
         }
     }
+}
 
         private void CriarInterface()
         {
