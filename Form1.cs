@@ -18,6 +18,9 @@ namespace CalculadoraMedia
         Label lblFinal = new Label();
         Label lblStatus = new Label();
 
+        Button btnLimparFinal;
+Button btnFinal;
+
         public Form1()
         {
             InitializeComponent();
@@ -101,7 +104,7 @@ namespace CalculadoraMedia
             CriarResultado(card, "Semestral", lblSemestral, 290);
 
             Button btnLimparSemestral = CriarBotao("Limpar", 120, 335);
-            btnLimparSemestral.Click += LimparTudo;
+            btnLimparSemestral.Click += LimparSemestral;
 
             Button btnSemestral = CriarBotao("Semestral", 220, 335);
             btnSemestral.Click += CalcularSemestral;
@@ -110,9 +113,11 @@ namespace CalculadoraMedia
 
             CriarResultado(card, "Final", lblFinal, 445);
 
-            Button btnLimparFinal = CriarBotao("Limpar", 125, 485);
-            Button btnFinal = CriarBotao("Final", 225, 485);
-            btnFinal.Click += CalcularFinal;
+            btnLimparFinal = CriarBotao("Limpar", 125, 485);
+btnLimparFinal.Click += LimparFinal;
+
+btnFinal = CriarBotao("Final", 225, 485);
+btnFinal.Click += CalcularFinal;
 
 
             card.Controls.Add(topo);
@@ -209,11 +214,19 @@ txt.Leave += (s, e) =>
 {
     lblStatus.Text = "APROVADO";
     lblStatus.ForeColor = Color.Blue;
+
+    txtExame.Enabled = false;
+    btnFinal.Enabled = false;
+    btnLimparFinal.Enabled = false;
 }
 else
 {
     lblStatus.Text = "EXAME";
     lblStatus.ForeColor = Color.Goldenrod;
+
+    txtExame.Enabled = true;
+    btnFinal.Enabled = true;
+    btnLimparFinal.Enabled = true;
 }
         }
 
@@ -243,17 +256,24 @@ else
 }
         }
 
-        private void LimparTudo(object sender, EventArgs e)
-        {
-            txtNP1.Text = "0";
-            txtNP2.Text = "0";
-            txtPIM.Text = "0";
-            txtExame.Text = "0";
-            lblSemestral.Text = "0.0";
-            lblFinal.Text = "0.0";
-            lblStatus.Text = "STATUS";
-            lblStatus.ForeColor = Color.Black;
-        }
+        private void LimparSemestral(object sender, EventArgs e)
+{
+    txtNP1.Text = "0";
+    txtNP2.Text = "0";
+    txtPIM.Text = "0";
+
+    lblSemestral.Text = "0.0";
+
+    txtExame.Text = "0";
+    lblFinal.Text = "0.0";
+
+    lblStatus.Text = "STATUS";
+    lblStatus.ForeColor = Color.Black;
+
+    txtExame.Enabled = true;
+btnFinal.Enabled = true;
+btnLimparFinal.Enabled = true;
+}
 
         private void LimparFinal(object sender, EventArgs e)
         {
