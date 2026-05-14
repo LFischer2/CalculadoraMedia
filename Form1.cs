@@ -206,10 +206,11 @@ txt.Leave += (s, e) =>
     txtPIM.Text.Replace(",", "."),
     CultureInfo.InvariantCulture
 );
-
+    //Média Semestral com pesos, np1 e np2 são 40% e pim é 20%
             double media = (np1 * 0.4) + (np2 * 0.4) + (pim * 0.2);
 
             lblSemestral.Text = media.ToString("F1");
+    //Nota minima para aprovação na média semestral é 7
             if (media >= 7)
 {
     lblStatus.Text = "APROVADO";
@@ -244,6 +245,7 @@ else
             double final = (semestral + exame) / 2;
 
             lblFinal.Text = final.ToString("F1");
+            //Média Final deve ser maior ou igual a 5
             if (final >= 5)
 {
     lblStatus.Text = "APROVADO";
