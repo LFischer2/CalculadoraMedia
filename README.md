@@ -3,7 +3,7 @@
 Projeto desenvolvido para a disciplina de Programação Orientada a Objetos em C#.
 
 ## Descrição
-Aplicação para cálculo de média semestral e média final de alunos, seguindo regras acadêmicas.
+Aplicação para cálculo de média semestral e média final de alunos, seguindo regras acadêmicas e seguindo as condições.
 
 ## Funcionalidades
 - Cálculo da Média Semestral
